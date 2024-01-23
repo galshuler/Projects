@@ -162,7 +162,7 @@ GROUP BY user_id;
 •	Validation of 'Other' Category: An additional validation step was conducted to assess the prevalence of the 'Other' category. It was found that only one case (Null) fell into this category. This ensures that the 'Other' category does not conceal a significant number of users, thereby validating the robustness of our categorization approach.
 
 
-### 4.Revenue Analysis - New York vs. California:
+### 4. Revenue Analysis - New York vs. California:
 
 **Objective:**
 
@@ -204,7 +204,7 @@ ORDER BY r.revenue_type, us.state_name;
 •	Grouping by state_name and revenue_type allows for a detailed comparison of the total USD amount per revenue type between the two states.
 •	The query evolved to explicitly exclude null revenue_type values, ensuring that the focus remains on meaningful and comparable data.
 
-### 5.Operating System Revenue Ranking:
+### 5. Operating System Revenue Ranking:
 
 **Objective:**
 Rank operating system groups by their total revenue contribution to identify the most lucrative platforms.
@@ -259,6 +259,138 @@ ORDER BY operating_system_rank;
 -	The query is designed to consider only relevant, positive revenue figures, ensuring that the rankings are based on meaningful data.
 -	The categorization method in the CTE accounts for various user scenarios, ensuring that all users are appropriately classified and contributing to the accuracy of the analysis.
 
-### 6.Data Integrity Check:
+### 6. Data Integrity Check:
+
+**Objective:**
+
+Investigate potential anomalies, changes, or problems in the data.
+
+**1.Check for Missing Values in Key Fields**
+   
+**Finding:**
+
+-	The 'device' column in the 'Events' table has 5,340 null values.
+-	The 'usd' column in the 'Revenue' table has 3 null values.
+-	The 'revenue_type' column in the 'Revenue' table has 61 null values.
+
+**Potential Impact:**
+
+-	Missing 'device' Data: Null values in the 'device' column can hinder user segmentation and behavioral analysis, leading to incomplete insights into how different devices impact user engagement and revenue.
+-	Missing 'usd' Data: Missing revenue data can skew overall financial analysis, underreport total earnings, and affect insights derived from revenue-based metrics.
+-	Missing 'revenue_type' Data: Nulls in the 'revenue_type' column could obscure the understanding of revenue streams and affect strategies growth decisions.
+
+**Queries used:**
+
+```sql
+-- Check for nulls in for the Evenets Table
+SELECT
+    SUM(CASE WHEN user_id IS NULL THEN 1 ELSE 0 END) AS null_user_id_count,
+    SUM(CASE WHEN event_type IS NULL THEN 1 ELSE 0 END) AS null_event_type_count,
+    SUM(CASE WHEN timestamp IS NULL THEN 1 ELSE 0 END) AS null_timestamp_count,
+    SUM(CASE WHEN location IS NULL THEN 1 ELSE 0 END) AS null_location_count,
+    SUM(CASE WHEN device IS NULL THEN 1 ELSE 0 END) AS null_device_count
+FROM 
+    Events;
+
+-- Check for nulls in for the Revenue Table
+SELECT
+    SUM(CASE WHEN user_id IS NULL THEN 1 ELSE 0 END) AS null_user_id_count,
+    SUM(CASE WHEN local_transaction_at IS NULL THEN 1 ELSE 0 END) AS null_local_transaction_at_count,
+    SUM(CASE WHEN revenue_id IS NULL THEN 1 ELSE 0 END) AS null_revenue_id_count,
+    SUM(CASE WHEN usd IS NULL THEN 1 ELSE 0 END) AS null_usd_count,
+    SUM(CASE WHEN revenue_type IS NULL THEN 1 ELSE 0 END) AS null_revenue_type_count
+FROM 
+    Revenue;
+```
+
+**2. Check for Data Completeness and Integrity**
+
+```sql
+Finding: Two users appear in the revenue data but not in the 'Events' data.
+Potential Impact: This discrepancy might indicate issues with data collection or integration between systems, raising questions about the integrity and reliability of user-related analyses.
+Query used:
+SELECT DISTINCT r.user_id 
+FROM Revenue r
+LEFT JOIN Events e ON r.user_id = e.user_id
+WHERE e.user_id IS NULL;
+```
+
+**3. Detect Duplicate Records**
+
+Finding: 68 cases of complete rows duplication in the 'Events' data (out of 545,430 rows). 1,297 cases of complete rows duplication in the 'Revenue' data (out of 32,533 rows).
+Potential Impact: Duplicates can lead to overestimation of user activity, inflated revenue figures, and erroneous conclusions about user engagement and financial performance. To ensure the accuracy of future analyses, a systematic approach to identifying and removing duplicates before analysis should be implemented. This involves defining clear criteria for what constitutes a duplicate record and applying consistent filters to exclude these records. In our case, verifying that each user is consistently associated with a single location is crucial to maintain the accuracy of geographical analyses and prevent any potential skew in our results.
+
+```sql
+Queries Used:
+-- For Events
+SELECT COUNT(*)
+FROM (
+    SELECT user_id, event_type, timestamp, location, device, COUNT(*)
+    FROM Events
+    GROUP BY user_id, event_type, timestamp, location, device
+    HAVING COUNT(*) > 1
+) sub;
+
+-- For Revenue
+SELECT COUNT(*)
+FROM (
+    SELECT user_id, revenue_id, local_transaction_at, usd, revenue_type, COUNT(*)
+    FROM Revenue
+    GROUP BY user_id, revenue_id, local_transaction_at, usd, revenue_type
+    HAVING COUNT(*) > 1
+) sub;
+
+-- The number of Users with more than one unique Location (there are no such cases in our data)
+SELECT
+COUNT(*)
+FROM(
+SELECT
+    user_id,
+    COUNT(DISTINCT location) AS total_locations
+FROM Events
+GROUP BY user_id
+HAVING COUNT(DISTINCT location) > 1) sub;
+```
+
+**4. Analyze Changes Over Time**
+
+Finding: Noticeable differences in income per event depending on the month. June shows the highest income per event, while September shows the lowest.
+Potential Impact: Seasonal trends, marketing campaigns, or changes in user behavior might explain these fluctuations. Ignoring these trends might lead to misinterpretation of overall performance and user engagement.
+
+**Query Used:**
+
+```sql
+-- Monthly event counts
+WITH event_month AS (
+SELECT 
+    DATE_TRUNC('month', CAST(timestamp AS timestamp)) AS month, 
+    COUNT(*) AS event_count
+FROM Events
+GROUP BY DATE_TRUNC('month', CAST(timestamp AS timestamp))
+ORDER BY month),
+
+-- Monthly revenue 
+revenue_month AS(
+SELECT 
+    DATE_TRUNC('month', CAST(local_transaction_at AS timestamp)) AS month, 
+    SUM(usd) AS total_revenue
+FROM Revenue
+GROUP BY DATE_TRUNC('month', CAST(local_transaction_at AS timestamp))
+ORDER BY month)
+
+-- Calculating the income per event each month
+SELECT
+    e.month,
+    r.total_revenue,
+    e.event_count,
+    r.total_revenue/e.event_count AS revenue_per_events
+FROM event_month e
+JOIN revenue_month r
+ON e.month = r.month;
+```
+
+**Insight:**
+
+Discovering missing values, discrepancies in user data, and duplicate records clearly indicates we need to refine our analysis approach. To tackle these issues, we should start by removing duplicate records, aligning user data across all tables, and addressing any gaps in financial information. These steps are vital for ensuring the precision of our trend analysis and the validity of our financial metrics, which in turn, will lead to more dependable insights. By regularly integrating data quality checks into our analysis process, we'll further protect the integrity of our future findings. By prioritizing these corrective measures, we ensure that our data-driven decisions are based on a solid and reliable foundation.
 
 </p>
