@@ -5,11 +5,13 @@
   
 ## Background
 
-'EchoSphere Networks', a renowned mobile casual app, approached us with a challenge: they needed to optimize their app's market penetration in California. Our task was to delve into their raw data, identify key markets for targeted marketing, understand platform-based revenue contributions, and ensure data integrity. This case study outlines our approach using SQL to analyze the data and the insights we derived.
+'EchoSphere Networks', a renowned mobile casual app, approached us with a challenge: they needed to optimize their app's market penetration in California. Our task was to delve into their raw data, identify key markets for targeted marketing, understand platform-based revenue contributions, and ensure data integrity. 
+This case study outlines our approach using SQL to analyze the data and the insights we derived.
 
 ## Ask
 
 **Objective:** 
+
 The primary goal was to use data analysis to guide 'EchoSphere Networks' in optimizing their app installations and revenue generation. 
 
 The specific objectives were to:
@@ -50,5 +52,45 @@ The specific objectives were to:
 
 - Addressed missing values and duplicate records in both tables.
 - Ensured data integrity for accurate analysis.
+
+## Analyze
+
+### 1. Installation Rate by City:
+   
+**Objective:**
+
+Identify cities in California with their corresponding app install rates, ranked from highest to lowest.
+
+**Query:**
+
+```sql
+SELECT
+  -- Extracts the city name from the location.
+  split_part(location, '_', 1) AS city_name,
+  -- Calculates the install rate.
+100 * COUNT(DISTINCT CASE WHEN event_type = 'install' THEN user_id END)::float / COUNT(DISTINCT user_id) AS install_rate
+FROM Events
+WHERE 
+  location LIKE '%_California' AND  -- Filters for cities in California.
+  event_type IS NOT NULL AND  -- Excludes rows where event_type is null.
+  location IS NOT NULL  -- Excludes rows where location is null.
+GROUP BY  city_name
+-- Orders by the highest install rate to the lowest.
+ORDER BY install_rate DESC;
+```
+
+**Insight:** 
+
+The query revealed cities with the highest app install rates, with a focus on eliminating rows with null values for accuracy.
+
+
+**Non-trivial decision and Explanations:**
+
+-	Installation Rate Calculation: The query calculates the installation rate as the percentage of 'install' events out of all events recorded for each city in California. This metric provides a clear indicator of user engagement and app acceptance in different regions.
+
+-	Exclusion of Null Values: The query includes conditions to exclude rows where 'event_type' or 'location' is null. These conditions ensure that rows with null values in critical fields are excluded, thereby improving the accuracy and reliability of the install rate calculation
+
+
+
 
 </p>
