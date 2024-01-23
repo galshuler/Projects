@@ -1,4 +1,4 @@
-# Maximizing App Installation: A Data-Driven Approach with 'EchoSphere Networks'
+#  Exploratory Data Analysis : EchoSphere Optimizing App Installations
 
 <span style="font-size:18px;"> 
 <p align="justify">
