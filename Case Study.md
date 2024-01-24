@@ -164,7 +164,9 @@ GROUP BY user_id;
 **Insight:** 
 
 •	Preventing Overlaps: The query is designed to prevent category overlaps by prioritizing the check for 'Both' before looking at individual operating systems. This approach ensures that users with both Android and iOS devices are correctly identified as 'Both' before the query considers the other cases. This order is crucial to prevent the 'Android' and 'iOS' conditions from overshadowing the 'Both' condition, ensuring accurate categorization.
+
 •	Handling Nulls and Other Types: By using SUM() and checking if it's greater than 0, the query effectively ignores nulls and other non-Android/iOS entries. This ensures users with only null or unrecognized device entries are categorized as 'Other', addressing potential issues with null values.
+
 •	Validation of 'Other' Category: An additional validation step was conducted to assess the prevalence of the 'Other' category. It was found that only one case (Null) fell into this category. This ensures that the 'Other' category does not conceal a significant number of users, thereby validating the robustness of our categorization approach.
 
 
