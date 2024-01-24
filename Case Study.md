@@ -321,9 +321,10 @@ FROM
 
 **2. Check for Data Completeness and Integrity**
 
-```sql
 Finding: Two users appear in the revenue data but not in the 'Events' data.
 Potential Impact: This discrepancy might indicate issues with data collection or integration between systems, raising questions about the integrity and reliability of user-related analyses.
+
+```sql
 Query used:
 SELECT DISTINCT r.user_id 
 FROM Revenue r
