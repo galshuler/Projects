@@ -14,7 +14,7 @@ This case study outlines our approach using SQL to analyze the data and the insi
 
 The primary goal was to use data analysis to guide 'EchoSphere Networks' in optimizing their app installations and revenue generation. 
 
-The specific objectives were to:
+**The specific objectives were to:**
 
 1. Determine cities in California with the highest app install rates.
    
