@@ -266,9 +266,9 @@ ORDER BY operating_system_rank;
 **Insight:**
 
 -	The use of DENSE_RANK() window function provides an efficient and clear method for rating the operating systems, allowing for easy comparison of their revenue contribution.
--	
+  
 -	The query is designed to consider only relevant, positive revenue figures, ensuring that the rankings are based on meaningful data.
--	
+	
 -	The categorization method in the CTE accounts for various user scenarios, ensuring that all users are appropriately classified and contributing to the accuracy of the analysis.
 
 ### 6. Data Integrity Check:
