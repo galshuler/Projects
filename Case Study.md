@@ -133,7 +133,7 @@ LIMIT 3;
 
 **Insight:** 
 
-I decided to calculate 'expected_install_users' by multiplying the install rate with the total number of unique users as a strategic move. This approach strikes a balance between the quality of engagement, reflected in the install rate, and the quantity of potential users. It's about choosing cities not just for their high install potential but also for their substantial user base, ensuring that any targeted campaign has the impact we're aiming for. As for other approaches, we could consider weighted scoring. If specific aspects, like user base size or install rate, are prioritized, a weighted system could refine our targeting strategy, giving more weight to the factors that matter most.
+In the strategic evaluation of potential markets, I employed a methodical approach to calculate 'expected_install_users' by multiplying the installation rate with the total number of unique users in each city. This methodology effectively harmonizes the quality of user engagement, as indicated by the installation rate, with the quantity of the potential user base. The objective was to identify cities that not only exhibit a high potential for installations but also possess a significant user base, thereby ensuring that any targeted marketing campaigns deliver the desired impact. Additionally, I explored the possibility of implementing a weighted scoring system. This system would assign varying degrees of importance to key metrics such as user base size and installation rate, thereby refining our market targeting strategy to prioritize the most impactful factors.
 
 ### 3. Unique User Identification:
 
