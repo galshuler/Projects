@@ -321,8 +321,13 @@ FROM
 
 **2. Check for Data Completeness and Integrity**
 
-Finding: Two users appear in the revenue data but not in the 'Events' data.
-Potential Impact: This discrepancy might indicate issues with data collection or integration between systems, raising questions about the integrity and reliability of user-related analyses.
+**Finding**: 
+
+Two users appear in the revenue data but not in the 'Events' data.
+
+**Potential Impact**: 
+
+This discrepancy might indicate issues with data collection or integration between systems, raising questions about the integrity and reliability of user-related analyses.
 
 ```sql
 Query used:
@@ -334,8 +339,13 @@ WHERE e.user_id IS NULL;
 
 **3. Detect Duplicate Records**
 
-Finding: 68 cases of complete rows duplication in the 'Events' data (out of 545,430 rows). 1,297 cases of complete rows duplication in the 'Revenue' data (out of 32,533 rows).
-Potential Impact: Duplicates can lead to overestimation of user activity, inflated revenue figures, and erroneous conclusions about user engagement and financial performance. To ensure the accuracy of future analyses, a systematic approach to identifying and removing duplicates before analysis should be implemented. This involves defining clear criteria for what constitutes a duplicate record and applying consistent filters to exclude these records. In our case, verifying that each user is consistently associated with a single location is crucial to maintain the accuracy of geographical analyses and prevent any potential skew in our results.
+**Finding:**
+
+68 cases of complete rows duplication in the 'Events' data (out of 545,430 rows). 1,297 cases of complete rows duplication in the 'Revenue' data (out of 32,533 rows).
+
+**Potential Impact:** 
+
+Duplicates can lead to overestimation of user activity, inflated revenue figures, and erroneous conclusions about user engagement and financial performance. To ensure the accuracy of future analyses, a systematic approach to identifying and removing duplicates before analysis should be implemented. This involves defining clear criteria for what constitutes a duplicate record and applying consistent filters to exclude these records. In our case, verifying that each user is consistently associated with a single location is crucial to maintain the accuracy of geographical analyses and prevent any potential skew in our results.
 
 ```sql
 Queries Used:
@@ -371,8 +381,13 @@ HAVING COUNT(DISTINCT location) > 1) sub;
 
 **4. Analyze Changes Over Time**
 
-Finding: Noticeable differences in income per event depending on the month. June shows the highest income per event, while September shows the lowest.
-Potential Impact: Seasonal trends, marketing campaigns, or changes in user behavior might explain these fluctuations. Ignoring these trends might lead to misinterpretation of overall performance and user engagement.
+**Finding**: 
+
+Noticeable differences in income per event depending on the month. June shows the highest income per event, while September shows the lowest.
+
+**Potential Impact:** 
+
+Seasonal trends, marketing campaigns, or changes in user behavior might explain these fluctuations. Ignoring these trends might lead to misinterpretation of overall performance and user engagement.
 
 **Query Used:**
 
