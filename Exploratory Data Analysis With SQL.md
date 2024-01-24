@@ -1,4 +1,4 @@
-#  Exploratory Data Analysis : EchoSphere Optimizing App Installations
+# EchoSphere Optimizing App Installations
 
 <span style="font-size:18px;"> 
 <p align="justify">
