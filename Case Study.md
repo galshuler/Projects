@@ -541,7 +541,7 @@ Discovering missing values, discrepancies in user data, and duplicate records cl
 
 - **Data Storytelling:** I learned to present technical findings in an accessible manner, translating complex data insights into understandable and actionable business strategies.
 
-**Reflective Perspective**
+## Reflective Perspective
 
 Reflecting on this project, I realize the immense value of structured query language (SQL) as a powerful tool for data analysis and decision-making. The ability to extract meaningful insights from raw data has strengthened my appreciation for data-driven strategies in business.
 I learned that data tells a story far beyond mere numbers. Each query unveiled a new layer of understanding about user behavior and business performance. If I were to approach a similar problem in the future, I would place an even greater emphasis on:
