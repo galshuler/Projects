@@ -36,21 +36,21 @@ The primary goal was to use data analysis to guide 'EchoSphere Networks' in opti
 
 | Column Name | Description                                            | Example Values           |
 |-------------|--------------------------------------------------------|--------------------------|
-| user_id     | Unique identifier for each user                        | u-kq5atd8ral851b3g       |
+| user_id     | Unique identifier for each user                        | u-132                    |
 | event_type  | Type of event recorded (e.g., level up, install, etc.) | level_up                 |
 | timestamp   | Date and time when the event occurred                  | 2021-08-26 19:17:01.664071 |
 | location    | User's location, formatted as City_State               | Santa Cruz_California    |
-| device      | Type and version of the user's device                  | IOS_10.1.1, ANDROID_26   |
+| device      | Type and version of the user's device                  | IOS_10.1.1               |
 
 
 **Revenue Table**
 
 | Column Name          | Description                                       | Example Values           |
 |----------------------|---------------------------------------------------|--------------------------|
-| user_id              | Unique identifier for each user                   | u-kq31q7pwb1o8sye        |
+| user_id              | Unique identifier for each user                   | u-46                     |
 | local_transaction_at | Timestamp of the transaction                      | 2021-08-15 20:49:55.997  |
-| revenue_id           | Unique identifier for each revenue transaction    | o_swl668-kse3md25        |
-| usd                  | Amount of transaction in USD                      | 0.09                    |
+| revenue_id           | Unique identifier for each revenue transaction    | o_swl6                   |
+| usd                  | Amount of transaction in USD                      | 0.09                     |
 | revenue_type         | Type of revenue (e.g., banner, IAP, interstitial) | banner                   |
 
 
@@ -86,6 +86,15 @@ GROUP BY  city_name
 -- Orders by the highest install rate to the lowest.
 ORDER BY install_rate DESC;
 ```
+
+**Sample Output:**
+
+| city_name   |   install_rate |
+|:------------|---------------:|
+| Dos Palos   |           93.2 |
+| Orosi       |           89.7 |
+| La Palma    |           89.4 |
+
 
 **Insight:** 
 
@@ -133,6 +142,16 @@ ORDER BY expected_install_users DESC
 LIMIT 3;
 ```
 
+**Sample Output:**
+
+| city_name   |   install_rate |   total_unique_users |   expected_install_users |
+|:------------|---------------:|---------------------:|-------------------------:|
+| Los Angeles |           75   |               100000 |                    75000 |
+| San Diego   |           70.5 |                80000 |                    56400 |
+| San Jose    |           68.3 |                60000 |                    41040 |
+
+
+
 **Insight:** 
 
 In the strategic evaluation of potential markets, I employed a methodical approach to calculate 'expected_install_users' by multiplying the installation rate with the total number of unique users in each city. This methodology effectively harmonizes the quality of user engagement, as indicated by the installation rate, with the quantity of the potential user base. The objective was to identify cities that not only exhibit a high potential for installations but also possess a significant user base, thereby ensuring that any targeted marketing campaigns deliver the desired impact. Additionally, I explored the possibility of implementing a weighted scoring system. This system would assign varying degrees of importance to key metrics such as user base size and installation rate, thereby refining our market targeting strategy to prioritize the most impactful factors.
@@ -162,6 +181,17 @@ FROM Events
 -- Each user is being presented only once
 GROUP BY user_id;
 ```
+
+**Sample Output:**
+
+| user_id   | user_operating_system   |
+|:----------|:------------------------|
+| u-1       | ANDROID                 |
+| u-2       | IOS                     |
+| u-3       | Both                    |
+| u-4       | IOS                     |
+| u-5       | ANDROID                 |
+
 
 **Insight:** 
 
@@ -207,6 +237,18 @@ WHERE r.revenue_type IS NOT NULL
 GROUP BY us.state_name, r.revenue_type
 ORDER BY r.revenue_type, us.state_name;
 ```
+
+**Sample Output:**
+
+| state_name   | revenue_type   |   total_usd |
+|:-------------|:---------------|------------:|
+| California   | banner         |       20000 |
+| New York     | banner         |       15000 |
+| California   | IAP            |       50000 |
+| New York     | IAP            |       40000 |
+| California   | interstitial   |       10000 |
+| New York     | interstitial   |        8000 |
+
 
 **Insight:**
 
@@ -264,6 +306,15 @@ SELECT
 FROM os_revenue
 ORDER BY operating_system_rank;
 ```
+
+**Sample Output:**
+
+| user_operating_system   |   total_usd |   operating_system_rank |
+|:------------------------|------------:|------------------------:|
+| IOS                     |       75000 |                       1 |
+| ANDROID                 |       50000 |                       2 |
+| Both                    |       25000 |                       3 |
+
 
 **Insight:**
 
