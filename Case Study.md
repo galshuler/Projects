@@ -104,7 +104,7 @@ ORDER BY install_rate DESC;
 -	Exclusion of Null Values: The query includes conditions to exclude rows where 'event_type' or 'location' is null. These conditions ensure that rows with null values in critical fields are excluded, thereby improving the accuracy and reliability of the install rate calculation
 
 
-#### 2. Top 3 Cities for Targeted Marketing:
+### 2. Top 3 Cities for Targeted Marketing:
 
 **Objective:**
 
