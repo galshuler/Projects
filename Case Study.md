@@ -94,7 +94,8 @@ ORDER BY install_rate DESC;
 | Dos Palos   |           93.2 |
 | Orosi       |           89.7 |
 | La Palma    |           89.4 |
-
+| Santee      |           88.2 |
+| Pacifica    |           87.6 |
 
 **Insight:** 
 
