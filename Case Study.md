@@ -61,6 +61,8 @@ The primary goal was to use data analysis to guide 'EchoSphere Networks' in opti
 
 ## Analyze
 
+- All analyzes were performed using PostgreSQL.
+
 ### 1. Installation Rate by City:
    
 **Objective:**
