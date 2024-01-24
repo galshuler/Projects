@@ -347,8 +347,9 @@ WHERE e.user_id IS NULL;
 
 Duplicates can lead to overestimation of user activity, inflated revenue figures, and erroneous conclusions about user engagement and financial performance. To ensure the accuracy of future analyses, a systematic approach to identifying and removing duplicates before analysis should be implemented. This involves defining clear criteria for what constitutes a duplicate record and applying consistent filters to exclude these records. In our case, verifying that each user is consistently associated with a single location is crucial to maintain the accuracy of geographical analyses and prevent any potential skew in our results.
 
+**Queries Used:**
+
 ```sql
-Queries Used:
 -- For Events
 SELECT COUNT(*)
 FROM (
@@ -433,7 +434,7 @@ Discovering missing values, discrepancies in user data, and duplicate records cl
 
 2. Platform-Specific Strategies:
    
-    - Suggested focusing more resources on the most lucrative platfor (IOS) as identified by the revenue analysis.
+    - Suggested focusing more resources on the most lucrative platform (IOS) as identified by the revenue analysis.
     
 3. Data Quality Improvement:
    
