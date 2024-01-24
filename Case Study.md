@@ -147,9 +147,9 @@ LIMIT 3;
 
 | city_name   |   install_rate |   total_unique_users |   expected_install_users |
 |:------------|---------------:|---------------------:|-------------------------:|
-| Los Angeles |           75   |               100000 |                    75000 |
-| San Diego   |           70.5 |                80000 |                    56400 |
-| San Jose    |           68.3 |                60000 |                    41040 |
+| Los Angeles |         0.754  |               100000 |                    75000 |
+| San Diego   |         0.715  |                80000 |                    56400 |
+| San Jose    |         0.683  |                60000 |                    41040 |
 
 
 
