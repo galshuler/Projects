@@ -209,7 +209,9 @@ ORDER BY r.revenue_type, us.state_name;
 **Insight:**
 
 •	By pre-filtering the 'Events' table to include only users from New York and California, the CTE user_state becomes more efficient and focused, ensuring that only relevant data is processed in the main query.
+
 •	Grouping by state_name and revenue_type allows for a detailed comparison of the total USD amount per revenue type between the two states.
+
 •	The query evolved to explicitly exclude null revenue_type values, ensuring that the focus remains on meaningful and comparable data.
 
 ### 5. Operating System Revenue Ranking:
@@ -264,7 +266,9 @@ ORDER BY operating_system_rank;
 **Insight:**
 
 -	The use of DENSE_RANK() window function provides an efficient and clear method for rating the operating systems, allowing for easy comparison of their revenue contribution.
+-	
 -	The query is designed to consider only relevant, positive revenue figures, ensuring that the rankings are based on meaningful data.
+-	
 -	The categorization method in the CTE accounts for various user scenarios, ensuring that all users are appropriately classified and contributing to the accuracy of the analysis.
 
 ### 6. Data Integrity Check:
@@ -278,13 +282,17 @@ Investigate potential anomalies, changes, or problems in the data.
 **Finding:**
 
 -	The 'device' column in the 'Events' table has 5,340 null values.
+  
 -	The 'usd' column in the 'Revenue' table has 3 null values.
+  
 -	The 'revenue_type' column in the 'Revenue' table has 61 null values.
 
 **Potential Impact:**
 
 -	Missing 'device' Data: Null values in the 'device' column can hinder user segmentation and behavioral analysis, leading to incomplete insights into how different devices impact user engagement and revenue.
+  
 -	Missing 'usd' Data: Missing revenue data can skew overall financial analysis, underreport total earnings, and affect insights derived from revenue-based metrics.
+  
 -	Missing 'revenue_type' Data: Nulls in the 'revenue_type' column could obscure the understanding of revenue streams and affect strategies growth decisions.
 
 **Queries used:**
