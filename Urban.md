@@ -137,14 +137,11 @@ WHERE LOCATION_DESCRIPTION LIKE '%SCHOOL%';
 | PRIMARY_TYPE           | LOCATION_DESCRIPTION        |
 | ---------------------- | --------------------------- |
 | BATTERY                | SCHOOL, PUBLIC, GROUNDS     |
-| BATTERY                | SCHOOL, PUBLIC, BUILDING    |
 | ASSAULT                | SCHOOL, PUBLIC, GROUNDS     |
 | CRIMINAL DAMAGE        | SCHOOL, PUBLIC, GROUNDS     |
 | PUBLIC PEACE VIOLATION | SCHOOL, PRIVATE, BUILDING   |
 | CRIMINAL TRESPASS      | SCHOOL, PUBLIC, GROUNDS     |
 | NARCOTICS              | SCHOOL, PUBLIC, BUILDING    |
-| NARCOTICS              | SCHOOL, PUBLIC, GROUNDS     |
-| PUBLIC PEACE VIOLATION | SCHOOL, PUBLIC, BUILDING    |
 
 
 **Problem 6**
@@ -255,9 +252,4 @@ HAVING COUNT(CRIM.CASE_NUMBER) = (
 
 
 עי
-
-
-
-
-
 </p>
