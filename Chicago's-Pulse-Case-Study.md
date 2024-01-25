@@ -172,7 +172,7 @@ GROUP BY 1;
 
 **Problem 7**
 
-List 5 community areas with highest % of households below poverty line.
+List the five community areas with highest % of households below poverty line.
 
 ```sql
 SELECT COMMUNITY_AREA_NAME, PERCENT_HOUSEHOLDS_BELOW_POVERTY 
