@@ -103,7 +103,7 @@ WHERE PER_CAPITA_INCOME < 11000;
 
 **Problem 3**
 
-List all case numbers for crimes involving minors?(children are not considered minors for the purposes of crime analysis)
+List all case numbers for crimes involving minors (children are not considered minors for the purposes of crime analysis).
 
 ```sql
 SELECT CASE_NUMBER, DESCRIPTION 
