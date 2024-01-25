@@ -29,18 +29,6 @@ In "Analyzing Chicago's Pulse," we embark on a meticulous exploration of Chicago
 
 The datasets used in this study are more than mere collections of data; they represent the living stories of Chicago. Accessed through the city's Data Portal, these datasets include:
 
-1. Acquaint ourselves with key datasets reflecting Chicago's socio-economic, educational, and safety realms.
-   
-2. Seamlessly import these datasets into distinct tables within a BigQuery
-
-3. Employ SQL queries to unravel significant insights and resolve specific queries.
-
-## Dataset Overview: 
-
-**Unveiling Chicago's Multifaceted Data**
-
-The datasets at the heart of this study are not just numbers and stats; they are narratives of Chicago, accessible via the city's Data Portal. Let's get acquainted with them:
-
 - **Socioeconomic Indicators:** Offering a glimpse into Chicago's public health scenario, this dataset provides six essential socioeconomic indicators along with a "hardship index" across various community areas from 2008 to 2012 [Explore More](https://data.cityofchicago.org/Health-Human-Services/Census-Data-Selected-socioeconomic-indicators-in-C/kn9c-c2s2?utm_medium=Exinfluencer&utm_source=Exinfluencer&utm_content=000026UJ&utm_term=10006555&utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDB0201ENSkillsNetwork20127838-2021-01-01&cm_mmc=Email_Newsletter-_-Developer_Ed%2BTech-_-WW_WW-_-SkillsNetwork-Courses-IBMDeveloperSkillsNetwork-DB0201EN-SkillsNetwork-20127838&cm_mmca1=000026UJ&cm_mmca2=10006555&cm_mmca3=M12345678&cvosrc=email.Newsletter.M12345678&cvo_campaign=000026UJ).
 
 - **Public Schools Performance:** This dataset provides a comprehensive view of the educational landscape, highlighting the performance metrics of Chicago's public schools for the academic year 2011-2012. [Explore More](https://data.cityofchicago.org/Education/Chicago-Public-Schools-Progress-Report-Cards-2011-/9xs2-f89t?utm_medium=Exinfluencer&utm_source=Exinfluencer&utm_content=000026UJ&utm_term=10006555&utm_id=NA-SkillsNetwork-Channel-SkillsNetworkCoursesIBMDeveloperSkillsNetworkDB0201ENSkillsNetwork20127838-2021-01-01&cm_mmc=Email_Newsletter-_-Developer_Ed%2BTech-_-WW_WW-_-SkillsNetwork-Courses-IBMDeveloperSkillsNetwork-DB0201EN-SkillsNetwork-20127838&cm_mmca1=000026UJ&cm_mmca2=10006555&cm_mmca3=M12345678&cvosrc=email.Newsletter.M12345678&cvo_campaign=000026UJ).
