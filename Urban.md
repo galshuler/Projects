@@ -1,3 +1,6 @@
+<span style="font-size:18px;"> 
+<p align="justify">
+
 # Analyzing Chicago's Pulse: A Case Study on Urban Data
 
 # Introduction:
