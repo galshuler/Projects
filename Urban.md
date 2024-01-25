@@ -59,6 +59,217 @@ SELECT COUNT(*) AS total_crimes
 FROM CHICAGO_CRIME_DATA;
 ```
 
+**Sample Output:**
+
+Row	
+total_crimes
+1	
+533
+
+**Problem 2**
+
+List community areas with per capita income less than 11000
+
+```sql
+SELECT community_area_name, PER_CAPITA_INCOME 
+FROM CENSUS_DATA 
+WHERE PER_CAPITA_INCOME < 11000;
+```
+
+Row	
+community_area_name
+PER_CAPITA_INCOME
+1	
+Riverdale
+8201
+2	
+South Lawndale
+10402
+3	
+Fuller Park
+10432
+4	
+West Garfield Park
+10934
+
+**Problem 3**
+
+List all case numbers for crimes involving minors?(children are not considered minors for the purposes of crime analysis)
+
+
+SELECT CASE_NUMBER, DESCRIPTION 
+FROM CHICAGO_CRIME_DATA 
+WHERE DESCRIPTION LIKE '%MINOR%';
+
+Row	
+CASE_NUMBER
+DESCRIPTION
+1	
+HL266884
+SELL/GIVE/DEL LIQUOR TO MINOR
+2	
+HK238408
+ILLEGAL CONSUMPTION BY MIN
+
+**Problem 4**
+
+List all kidnapping crimes involving a child?
+
+
+SELECT CASE_NUMBER, DATE, DESCRIPTION 
+FROM `capstone-411010.medical_doctors.CHICAGO_CRIME_DATA`
+WHERE PRIMARY_TYPE = 'KIDNAPPING' AND DESCRIPTION LIKE '%CHILD%';
+
+Row	
+CASE_NUMBER
+DATE
+DESCRIPTION
+1	
+HN144152
+2007-01-26
+CHILD ABDUCTION/STRANGER
+
+
+**Problem 5**
+
+What kinds of crimes were recorded at schools?
+
+SELECT DISTINCT PRIMARY_TYPE, LOCATION_DESCRIPTION 
+FROM CHICAGO_CRIME_DATA 
+WHERE LOCATION_DESCRIPTION LIKE '%SCHOOL%';
+
+Row	
+PRIMARY_TYPE
+LOCATION_DESCRIPTION
+1	
+BATTERY
+SCHOOL, PUBLIC, GROUNDS
+2	
+BATTERY
+SCHOOL, PUBLIC, BUILDING
+3	
+ASSAULT
+SCHOOL, PUBLIC, GROUNDS
+4	
+CRIMINAL DAMAGE
+SCHOOL, PUBLIC, GROUNDS
+5	
+PUBLIC PEACE VIOLATION
+SCHOOL, PRIVATE, BUILDING
+6	
+CRIMINAL TRESPASS
+SCHOOL, PUBLIC, GROUNDS
+7	
+NARCOTICS
+SCHOOL, PUBLIC, BUILDING
+8	
+NARCOTICS
+SCHOOL, PUBLIC, GROUNDS
+9	
+PUBLIC PEACE VIOLATION
+SCHOOL, PUBLIC, BUILDING
+
+**Problem 6**
+
+List the average safety score for all types of schools.
+
+SELECT Elementary__Middle__or_High_School, AVG(SAFETY_SCORE) AS average_safety_score
+FROM CHICAGO_PUBLIC_SCHOOLS 
+GROUP BY 1;
+
+Row	
+Elementary__Middle__or_High_School
+average_safety_score
+1	
+HS
+49.623529411764707
+2	
+ES
+49.520383693045574
+3	
+MS
+48.0
+
+**Problem 7**
+
+List 5 community areas with highest % of households below poverty line.
+
+SELECT COMMUNITY_AREA_NAME, PERCENT_HOUSEHOLDS_BELOW_POVERTY 
+FROM CENSUS_DATA 
+ORDER BY PERCENT_HOUSEHOLDS_BELOW_POVERTY DESC 
+LIMIT 5;
+
+
+**Problem 8**
+
+Which 5 community area are most crime prone?
+
+SELECT COMMUNITY_AREA_NUMBER, COUNT(*) AS total_crimes 
+FROM CHICAGO_CRIME_DATA 
+GROUP BY COMMUNITY_AREA_NUMBER
+HAVING COMMUNITY_AREA_NUMBER  IS NOT NULL 
+ORDER BY COUNT(*) DESC LIMIT 5;
+
+Row	
+COMMUNITY_AREA_NUMBER
+total_crimes
+1	
+25
+43
+2	
+23
+22
+3	
+68
+21
+4	
+29
+16
+5	
+28
+16
+
+**Problem 9**
+
+Find the name of the community area with highest hardship index
+
+
+SELECT COMMUNITY_AREA_NAME, HARDSHIP_INDEX 
+FROM CENSUS_DATA 
+WHERE HARDSHIP_INDEX = (SELECT MAX(HARDSHIP_INDEX) FROM CENSUS_DATA);
+
+Row	
+COMMUNITY_AREA_NAME
+HARDSHIP_INDEX
+1	
+Riverdale
+98
+
+**Problem 10**
+
+Determine the Community Area Name with most number of crimes.
+
+SELECT CD.COMMUNITY_AREA_NAME, COUNT(CRIM.CASE_NUMBER) AS total_crimes
+FROM CHICAGO_CRIME_DATA CRIM
+JOIN CENSUS_DATA CD ON CRIM.COMMUNITY_AREA_NUMBER = CD.COMMUNITY_AREA_NUMBER
+GROUP BY CD.COMMUNITY_AREA_NAME
+HAVING COUNT(CRIM.CASE_NUMBER) = (
+    SELECT MAX(total_crimes)
+    FROM (
+        SELECT COUNT(*) AS total_crimes
+        FROM CHICAGO_CRIME_DATA
+        GROUP BY COMMUNITY_AREA_NUMBER
+    ) sub
+)
+
+
+Row	
+COMMUNITY_AREA_NAME
+total_crimes
+1	
+Austin
+43
+
 
 עי
 
