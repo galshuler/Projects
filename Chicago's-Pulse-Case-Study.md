@@ -75,7 +75,7 @@ FROM CHICAGO_CRIME_DATA;
 
 **Problem 2**
 
-List community areas with per capita income less than 11000
+List community areas with per capita income less than 11000.
 
 ```sql
 SELECT community_area_name, PER_CAPITA_INCOME 
@@ -217,7 +217,7 @@ ORDER BY COUNT(*) DESC LIMIT 5;
 
 **Problem 9**
 
-Find the name of the community area with highest hardship index
+Find the name of the community area with highest hardship index.
 
 ```sql
 SELECT COMMUNITY_AREA_NAME, HARDSHIP_INDEX 
