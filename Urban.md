@@ -37,4 +37,19 @@ For the essence of this study, specific subsets of the original datasets are use
 
 Note: These versions are not directly sourced from the Chicago Data Portal but are modified subsets, primed for our analysis.
 
+## Uploading the Data in BigQuery
+
+**Preparing Data for BigQuery**
+With our datasets acquired and primed for analysis, the next crucial step is to import them into BigQuery, Google's robust and scalable data warehouse solution. This step is essential for leveraging BigQuery's powerful data processing capabilities to extract valuable insights from our datasets.
+
+**Naming the Tables:**
+As I uploaded each dataset, I named them **CENSUS_DATA**, **CHICAGO_PUBLIC_SCHOOLS**, and **CHICAGO_CRIME_DATA** respectively. This was done to ensure clarity and ease of reference in my subsequent queries.
+
+
+
+
+
+
+
+
 </p>
