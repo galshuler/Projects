@@ -556,5 +556,6 @@ This project was not just an exercise in technical skill but also a lesson in th
 
 This analysis highlighted the significant impact of data-driven decision-making in optimizing app installation and revenue generation. By meticulously analyzing user engagement and financial data, we identified key markets, preferred user platforms, and critical data integrity issues. This project underscores the vital role of SQL and analytics in transforming raw data into actionable insights, steering strategic decisions, and fostering business growth.
 
+</p>
 
 </p>
