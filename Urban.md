@@ -7,10 +7,10 @@
 In this comprehensive case study, I will walk you through an in-depth analysis of three pivotal datasets from the city of Chicago. Our journey will span various dimensions of the city's ecosystem, including its infrastructure, educational framework, and public safety. The objectives are clear-cut:
 
 1. Acquaint ourselves with key datasets reflecting Chicago's socio-economic, educational, and safety realms.
-2. 
-3. Seamlessly import these datasets into distinct tables within a BigQuery
+   
+2. Seamlessly import these datasets into distinct tables within a BigQuery
 
-4. Employ SQL queries to unravel significant insights and resolve specific queries.
+3. Employ SQL queries to unravel significant insights and resolve specific queries.
 
 # Dataset Overview: Unveiling Chicago's Multifaceted Data
 
