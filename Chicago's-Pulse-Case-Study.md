@@ -53,8 +53,6 @@ Note: These versions are not directly sourced from the Chicago Data Portal but a
 
 **Setting Up for Advanced Analysis**
 
-## Uploading the Data in BigQuery
-
 The datasets were imported into BigQuery, Google's powerful data warehouse solution. This step was crucial for leveraging BigQuery's data processing capabilities. The datasets were named **CENSUS_DATA**, **CHICAGO_PUBLIC_SCHOOLS**, and **CHICAGO_CRIME_DATA** for clarity and ease of reference in subsequent analyses.
 
 ## In-depth Analysis and Insights
