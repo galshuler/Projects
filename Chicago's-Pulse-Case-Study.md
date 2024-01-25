@@ -125,7 +125,7 @@ List all kidnapping crimes involving a child?
 
 ```sql
 SELECT CASE_NUMBER, DATE, DESCRIPTION 
-FROM `capstone-411010.medical_doctors.CHICAGO_CRIME_DATA`
+FROM CHICAGO_CRIME_DATA
 WHERE PRIMARY_TYPE = 'KIDNAPPING' AND DESCRIPTION LIKE '%CHILD%';
 ```
 
