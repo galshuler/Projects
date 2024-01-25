@@ -4,9 +4,11 @@
 <p align="justify">
    
 **Executive Summary**
+
 In 'Analyzing Chicago's Pulse,' a comprehensive case study, we utilized data analytics to explore socio-economic, educational, and public safety aspects of Chicago. This study aimed to integrate and analyze key datasets from the city's Data Portal using BigQuery and SQL queries. Key findings include disparities in socio-economic indicators across community areas, varying educational performance in public schools, and significant patterns in crime incidents. The implications of these findings are far-reaching, offering insights for policy makers and stakeholders in urban planning and public administration.
 
 **Methodological Detail**
+
 This study involved a meticulous selection of relevant datasets from the Chicago Data Portal, focusing on socio-economic indicators, public school performance, and crime statistics. The datasets were processed and adapted for compatibility with BigQuery. Challenges faced included handling large data volumes and ensuring data integrity during processing. SQL queries were strategically formulated to target specific aspects of urban dynamics, such as crime patterns and educational performance metrics.
 
 ## Introduction:
