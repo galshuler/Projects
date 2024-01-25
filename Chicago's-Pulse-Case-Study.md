@@ -268,7 +268,7 @@ HAVING COUNT(CRIM.CASE_NUMBER) = (
 
 
 ## Limitations and Considerations
-The study acknowledges limitations such as the time range of data, potential biases in the data sources, and the exclusion of certain variables that might impact the study's findings. The implications of these limitations on the conclusions drawn will be discussed.
+The study acknowledges limitations such as the time range of data, potential biases in the data sources, and the exclusion of certain variables that might impact the study's findings.
 
 ## Recommendations or Actionable Insights
 Based on our findings, recommendations will be proposed. For example, areas with high crime rates might benefit from increased policing or community programs, while schools with lower performance scores could be targeted for additional educational resources.
