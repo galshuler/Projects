@@ -46,7 +46,21 @@ With our datasets acquired and primed for analysis, the next crucial step is to 
 As I uploaded each dataset, I named them **CENSUS_DATA**, **CHICAGO_PUBLIC_SCHOOLS**, and **CHICAGO_CRIME_DATA** respectively. This was done to ensure clarity and ease of reference in my subsequent queries.
 
 
+**Analysis**
 
+With our data now in BigQuery, we're set to begin our analysis. BigQuery's powerful SQL engine allows us to run complex queries efficiently.
+
+**Problem 1**
+
+Find the total number of crimes recorded in the CRIME table.
+
+```sql
+SELECT COUNT(*) AS total_crimes
+FROM CHICAGO_CRIME_DATA;
+```
+
+
+עי
 
 
 
