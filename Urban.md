@@ -76,6 +76,8 @@ FROM CENSUS_DATA
 WHERE PER_CAPITA_INCOME < 11000;
 ```
 
+**Sample Output:**
+
 | community_area_name | PER_CAPITA_INCOME |
 | ------------------- | ----------------- |
 | Riverdale           | 8201              |
@@ -94,6 +96,8 @@ FROM CHICAGO_CRIME_DATA
 WHERE DESCRIPTION LIKE '%MINOR%';
 ```
 
+**Sample Output:**
+
 | CASE_NUMBER | DESCRIPTION                  |
 | ----------- | ---------------------------- |
 | HL266884    | SELL/GIVE/DEL LIQUOR TO MINOR|
@@ -110,6 +114,8 @@ FROM `capstone-411010.medical_doctors.CHICAGO_CRIME_DATA`
 WHERE PRIMARY_TYPE = 'KIDNAPPING' AND DESCRIPTION LIKE '%CHILD%';
 ```
 
+**Sample Output:**
+
 | CASE_NUMBER | DATE       | DESCRIPTION            |
 | ----------- | ---------- | ---------------------- |
 | HN144152    | 2007-01-26 | CHILD ABDUCTION/STRANGER |
@@ -125,6 +131,8 @@ SELECT DISTINCT PRIMARY_TYPE, LOCATION_DESCRIPTION
 FROM CHICAGO_CRIME_DATA 
 WHERE LOCATION_DESCRIPTION LIKE '%SCHOOL%';
 ```
+
+**Sample Output:**
 
 | PRIMARY_TYPE           | LOCATION_DESCRIPTION        |
 | ---------------------- | --------------------------- |
@@ -149,6 +157,8 @@ FROM CHICAGO_PUBLIC_SCHOOLS
 GROUP BY 1;
 ```
 
+**Sample Output:**
+
 | Elementary__Middle__or_High_School | average_safety_score |
 | ---------------------------------- | -------------------- |
 | HS                                 | 49.623529411764707   |
@@ -166,6 +176,8 @@ FROM CENSUS_DATA
 ORDER BY PERCENT_HOUSEHOLDS_BELOW_POVERTY DESC 
 LIMIT 5;
 ```
+
+**Sample Output:**
 
 | COMMUNITY_AREA_NAME | PERCENT_HOUSEHOLDS_BELOW_POVERTY |
 | ------------------- | -------------------------------- |
@@ -188,6 +200,8 @@ HAVING COMMUNITY_AREA_NUMBER  IS NOT NULL
 ORDER BY COUNT(*) DESC LIMIT 5;
 ```
 
+**Sample Output:**
+
 | COMMUNITY_AREA_NUMBER | total_crimes |
 | --------------------- | ------------ |
 | 25                    | 43           |
@@ -206,6 +220,8 @@ SELECT COMMUNITY_AREA_NAME, HARDSHIP_INDEX
 FROM CENSUS_DATA 
 WHERE HARDSHIP_INDEX = (SELECT MAX(HARDSHIP_INDEX) FROM CENSUS_DATA);
 ```
+
+**Sample Output:**
 
 | COMMUNITY_AREA_NAME | HARDSHIP_INDEX |
 | ------------------- | -------------- |
@@ -230,6 +246,8 @@ HAVING COUNT(CRIM.CASE_NUMBER) = (
     ) sub
 )
 ```
+
+**Sample Output:**
 
 | COMMUNITY_AREA_NAME | total_crimes |
 | ------------------- | ------------ |
