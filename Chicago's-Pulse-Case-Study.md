@@ -49,9 +49,6 @@ To facilitate our analysis, specific subsets of these datasets in .CSV format we
 
 Note: These versions are not directly sourced from the Chicago Data Portal but are modified subsets, primed for our analysis.
 
-**Methodological Detail**
-
-
 ## Data Integration into BigQuery
 
 **Setting Up for Advanced Analysis**
