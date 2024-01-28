@@ -248,7 +248,7 @@ HAVING COUNT(CRIM.CASE_NUMBER) = (
         FROM CHICAGO_CRIME_DATA
         GROUP BY COMMUNITY_AREA_NUMBER
     ) sub
-)
+);
 ```
 
 **Sample Output:**
