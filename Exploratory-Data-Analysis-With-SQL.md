@@ -383,6 +383,8 @@ Two users appear in the revenue data but not in the 'Events' data.
 
 This discrepancy might indicate issues with data collection or integration between systems, raising questions about the integrity and reliability of user-related analyses.
 
+**Queries used:**
+
 ```sql
 Query used:
 SELECT DISTINCT r.user_id 
